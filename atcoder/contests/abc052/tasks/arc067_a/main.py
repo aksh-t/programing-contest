@@ -7,7 +7,6 @@ n = 1
 for i in range(2, N + 1):
     n = n * i
 
-
 def get_prime_factor(n):
     from collections import defaultdict
     res = defaultdict(int)
@@ -23,5 +22,9 @@ def get_prime_factor(n):
 
 prime_factor = get_prime_factor(n)
 
-# WIP
-# TODO: 素因数から約数(の個数)をどうやって取り出すか
+factors_count = 1
+for count in prime_factor.values():
+    factors_count = factors_count * (count + 1)
+
+res = factors_count % (10 ** 9 + 7)
+print(res)
