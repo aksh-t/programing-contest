@@ -10,7 +10,7 @@ def gcd(a, b):
 
 def lcm(a, b):
     g = gcd(a, b)
-    return a / g * b
+    return a // g * b
 
 res = Ts[0]
 for T in Ts:
