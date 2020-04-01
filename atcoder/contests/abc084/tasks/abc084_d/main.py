@@ -1,7 +1,13 @@
 # D - 2017-like Number
 # https://atcoder.jp/contests/abc084/tasks/abc084_d
 
+counts = []
+counts.append(0)
+counts.append(0)
+counts.append(0)
+
 prime = []
+
 is_prime = []
 is_prime.append(False)
 is_prime.append(False)
@@ -19,6 +25,17 @@ def sieve(r):
                 is_prime[j] = False
                 j = j + i
 
+def calc_like_number_count(r):
+    for i in range(3, r + 1):
+        if i % 2 == 1 and is_prime[i] and is_prime[(i + 1) // 2]:
+            counts.append(1)
+        else:
+            counts.append(0)
+    
+    for i in range(3, r + 1):
+        counts[i] = counts[i] + counts[i - 1]
+
+
 def main():
     Q = int(input())
     querys = []
@@ -30,9 +47,9 @@ def main():
             max_r = r
 
     sieve(max_r)
+    calc_like_number_count(max_r)
 
     for l, r in querys:
-        like_numbers = [n for n in prime if n % 2 == 1 and l <= n <= r and is_prime[(n + 1) // 2]]
-        print(len(like_numbers))
+        print(counts[r] - counts[l - 1])
     
 main()
