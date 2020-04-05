@@ -1,43 +1,31 @@
+import sys
+import queue
+
 def main():
     K = int(input())
+    q = queue.Queue()
+    for i in range(1, 10):
+        q.put(i)
 
-    lunlun_number_memo = {}
-
-    # def is_lunlun(str_n):
-    #     while True:
-    #         if lunlun_number_memo.get(str_n):
-    #             return True
-    #         elif len(str_n) == 1:
-    #             return True
-    #         else:
-    #             if abs(int(str_n[0]) - int(str_n[1])) <= 1:
-    #                 str_n = str_n[1:]
-    #             else:
-    #                 return False
-
-
-    lunlun_number_count = 0
     i = 0
-    while lunlun_number_count < K:
+    while True:
         i += 1
-        # if is_lunlun(str(i)):
-        str_i = str(i)
-        while True:
-            if lunlun_number_memo.get(str_i) or len(str_i) == 1:
-                lunlun_number_memo[str(i)] = True
-                lunlun_number_count += 1
-                break
-            else:
-                if abs(int(str_i[0]) - int(str_i[1])) <= 1:
-                    str_i = str_i[1:]
-                else:
-                    break
 
-            # print(i)
-            # print(lunlun_number_count)
-            # print("running")
+        n = q.get()
+        center_num = (10 * n) + (n % 10)
+        
+        if n % 10 != 0:
+            q.put(center_num - 1)
+        
+        q.put(center_num)
 
-    print(i)
+        if n % 10 != 9:
+            q.put(center_num + 1)
+
+        if i >= K:
+            # print(q.queue)
+            print(n)
+            sys.exit()
 
 if __name__ == '__main__':
     main()
