@@ -7,17 +7,7 @@ S = input()
 N = len(S)
 
 def is_palindrome(s):
-    n = len(s)
-    if n == 2:
-        if s[0] == s[1]:
-            return True
-        else:
-            return False
-    else:
-        if s[:n//2] == s[:n//2:-1]:
-            return True
-        else:
-            return False
+    return s == s[::-1]
 
 if not is_palindrome(S):
     print("No")
