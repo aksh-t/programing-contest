@@ -1,25 +1,27 @@
 def main():
     S = input()
+
+    # MAX_S = int("9" * 200000) # 大き過ぎる
     multipuls = []
     answers = []
 
-    # 事前に2019の倍数を作っておいた方がコスト削減になるかと思ったが、
-    # あまり意味がない気がしてきたのでやめる
-    # i = 1
-    # while True:
-    #     if 2019 * i > 200000:
-    #         break
-    #     multipuls.append(2019 * i)
-    #     i += 1
+    i = 1
+    while True:
+        if 2019 * i > MAX_S:
+            print(i)
+            break
+        multipuls.append(2019 * i)
+        i += 1
+        print(i, 2019 * i)
 
-    for i in range(len(S) - 1):
-        for j in range(i + 3, len(S)):
-            # print(S[i:j+1])
-            # print(i + 1, j + 1)
-            if int(S[i:j+1]) % 2019 == 0:
-                answers.append((i + 1, j + 1))
+    # for i in range(len(S) - 1):
+    #     for j in range(i + 3, len(S)):
+    #         # print(S[i:j+1])
+    #         # print(i + 1, j + 1)
+    #         if int(S[i:j+1]) % 2019 == 0:
+    #             answers.append((i + 1, j + 1))
 
-    print(len(answers))
+    # print(len(answers))
 
 
 if __name__ == '__main__':
