@@ -19,8 +19,7 @@ def main():
         # print(f"ans: {ans}")
 
         cnt[tot] += 1
-        tot += int(S[i]) * x
-        tot %= 2019
+        tot = (tot + (int(S[i]) * x)) % 2019
         ans += cnt[tot]
         x = x * 10
     
