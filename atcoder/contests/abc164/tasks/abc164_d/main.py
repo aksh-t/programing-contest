@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 def main():
     S = input()
     # S = "1" * 200000
@@ -7,7 +5,7 @@ def main():
 
     x = 1
     tot = 0
-    cnt = defaultdict(int)
+    cnt = [0] * 2019
     ans = 0
 
     for i in range(len(S)):
