@@ -1,5 +1,3 @@
-from sys import exit
-
 def main():
     X = int(input())
     deposit = 100
